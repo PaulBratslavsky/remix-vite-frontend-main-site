@@ -18,12 +18,7 @@ export function PageHeader({ data, children }: Readonly<PageHeaderProps>) {
 
   return (
     <header className="    
-    py-20 
-    md:py-32 
     relative 
-    border-2 
-    border-gray-200 
-    rounded-[30px] 
     overflow-hidden
     h-[500px]
     ">

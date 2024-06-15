@@ -81,7 +81,7 @@ export default function BlogRoute() {
   return (
     <div>
       <section>{pageData.blocks.map(blocksRenderer)}</section>
-      <section className="space-y-6 sm:space-y-12">
+      <section className="container mx-auto py-16 space-y-6 sm:space-y-12">
         <h2 className="text-4xl font-bold text-primary text-center my-6">
           All Posts
         </h2>

@@ -23,6 +23,7 @@ export function Search({ query }: { readonly query: string }) {
   }, [query]);
 
   return (
+    <div className="container">
     <Form
       id="search-form"
       role="search"
@@ -44,5 +45,6 @@ export function Search({ query }: { readonly query: string }) {
       />
       <div id="search-spinner" aria-hidden hidden={!searching} />
     </Form>
+  </div>
   );
 }

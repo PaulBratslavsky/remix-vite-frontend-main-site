@@ -38,11 +38,7 @@ export function Hero({ data }: { readonly data: HeroProps }) {
   return (
     <section
       className="
-      py-20 
-      md:py-32 
       relative 
-      border-2 
-      rounded-[30px] 
       overflow-hidden
       h-full
       lg:h-[600px]

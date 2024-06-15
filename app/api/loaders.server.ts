@@ -40,16 +40,21 @@ export async function getPageData(slug: string) {
 }
 
 export async function getGlobalData() {
-  const query = qs.stringify({
+
+  const url = new URL("/api/global", baseUrl);
+
+  url.search = qs.stringify({
     populate: ["topNav.logoLink", "topNav.navItem"],
   });
 
-  const url = `${baseUrl}/api/global?${query}`;
-  return await fetchData(url);
+  return await fetchData(url.href);
 }
 
 export async function getHomePageData() {
-  const query = qs.stringify({
+
+  const url = new URL("/api/home-page", baseUrl);
+  
+  url.search = qs.stringify({
     populate: {
       blocks: {
         populate: {
@@ -64,8 +69,7 @@ export async function getHomePageData() {
     },
   });
 
-  const url = `${baseUrl}/api/home-page?${query}`;
-  return fetchData(url);
+  return fetchData(url.href);
 }
 
 export async function getAllMusicData() {
@@ -96,7 +100,9 @@ export async function getAllLinksData() {
 
 export async function getAllPostsData(query: string, page: string) {
   const url = new URL("/api/posts", baseUrl);
+  
   url.search = qs.stringify({
+    sort: { createdAt: "desc" },
     populate: {
       image: {
         fields: ["url", "alternativeText"],
@@ -114,11 +120,13 @@ export async function getAllPostsData(query: string, page: string) {
       page: page,
     },
   });
+
   return await fetchData(url.href);
 }
 
 export async function getSinglePostsData(slug: string) {
   const url = new URL("/api/posts", baseUrl);
+
   url.search = qs.stringify({
     filters: {
       slug: {
@@ -138,11 +146,13 @@ export async function getSinglePostsData(slug: string) {
       },
     },
   });
+
   return await fetchData(url.href);
 }
 
 export async function getSinglePreviewPostsData(slug: string) {
   const url = new URL("/api/posts", baseUrl);
+  
   url.search = qs.stringify({
     filters: {
       slug: {
@@ -163,6 +173,7 @@ export async function getSinglePreviewPostsData(slug: string) {
     },
     publicationState: "preview",
   });
+
   return await fetchData(url.href);
 }
 
