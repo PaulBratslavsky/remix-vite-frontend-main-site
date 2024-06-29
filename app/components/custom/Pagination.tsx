@@ -70,7 +70,7 @@ export function PaginationComponent({
           />
         </PaginationItem>
         <PaginationItem>
-          <span className="p-2 font-semibold text-pink-500">Page {currentPage}</span>
+          <span className="p-2 font-semibold text-primary leading-normal">Page {currentPage}</span>
         </PaginationItem>
         <PaginationItem>
           <PaginationArrow

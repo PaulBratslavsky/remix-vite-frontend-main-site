@@ -15,18 +15,18 @@ export async function action(args: ActionFunctionArgs) {
 
   if (!videoId) return json({ data: null, message: "No videoId found!" });
 
-  let response: any = null;
+  let response = null;
 
   switch (formItems._action) {
     case "chat":
-      response = await chat(videoId as string, formItems.query as string);
+      response = await chat(videoId, formItems.query as string);
       return json({ data: response?.text, message: "Updated!" });
     default:
       return json({ data: null, message: "No action found!" });
   }
 }
 
-export function VideoChat({ videoId }: { videoId: string }) {
+export function VideoChat({ videoId }: { readonly videoId: string }) {
   const [text, setText] = useState("");
   const fetcher = useFetcher<typeof action>();
   const isSubmitting = fetcher.formData?.get("_action") === "chat";
@@ -36,7 +36,7 @@ export function VideoChat({ videoId }: { videoId: string }) {
 
   useEffect(() => {
     fetcher.load("/resources/video-chat/" + videoId);
-  }, []);
+  }, [fetcher, videoId]);
 
   useEffect(() => {
     if (data) {

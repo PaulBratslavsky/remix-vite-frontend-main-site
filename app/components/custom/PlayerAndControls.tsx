@@ -6,6 +6,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "~/components/ui/tabs";
 
 interface PlayerAndControlsProps {
   videoId: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   playlist?: any[];
   title: string;
   description: string;
@@ -28,7 +29,7 @@ export function PlayerAndControls({
   }
 
   return (
-    <section className="overflow-hidden bg-slate-950 rounded-lg">
+    <section className="overflow-hidden bg-slate-200 ">
       <div className="mx-auto grid grid-cols-1 items-start lg:grid-cols-3">
         {/* Left column */}
         <div className="grid grid-cols-1 lg:col-span-2">
@@ -39,7 +40,7 @@ export function PlayerAndControls({
         <div className="grid grid-cols-1">
           <aside className="py-6 px-2">
             <Tabs defaultValue="chapters" >
-              <TabsList className="w-full bg-black text-white">
+              <TabsList className="w-full bg-primary text-white">
                 <TabsTrigger value="chapters">Chapter</TabsTrigger>
                 <TabsTrigger value="chat">Chat</TabsTrigger>
               </TabsList>

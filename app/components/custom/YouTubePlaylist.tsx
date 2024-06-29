@@ -14,10 +14,10 @@ export interface PlaylistItem {
 export type Playlist = PlaylistItem[];
 
 function calculateDuration(start: number, end: number) {
-  let duration = end - start;
-  let totalSeconds = Math.floor(duration);
-  let minutes = Math.floor(totalSeconds / 60);
-  let seconds = totalSeconds % 60;
+  const duration = end - start;
+  const totalSeconds = Math.floor(duration);
+  const minutes = Math.floor(totalSeconds / 60);
+  const seconds = totalSeconds % 60;
 
   return `${minutes}min ${seconds}sec`;
 }

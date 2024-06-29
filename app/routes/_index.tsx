@@ -24,7 +24,7 @@ export default function Index() {
   return (
     <div>
       <Hero data={heroData} />
-      {/* <FeaturedPosts /> */}
+      <FeaturedPosts />
     </div>
   );
 }
