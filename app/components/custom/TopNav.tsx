@@ -61,7 +61,7 @@ export function TopNav({ data }: { readonly data: TopNavProps }) {
       className="
       bg-white 
       dark:bg-gray-800 
-      rounded-full my-4
+      rounded-full my-1
       "
     >
       <div className="flex mx-4 items-center justify-between px-4 py-2">
