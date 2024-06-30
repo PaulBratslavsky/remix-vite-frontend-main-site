@@ -69,7 +69,7 @@ export function YouTubePlaylist({
                           className={`${
                             currentClipIndex === index
                               ? "text-primary"
-                              : "text-gray-200"
+                              : "text-gray-500"
                           }`}
                         >
                           {clip.title}
