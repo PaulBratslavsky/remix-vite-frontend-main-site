@@ -32,7 +32,7 @@ export function PlayerAndControls({
     <section className="overflow-hidden bg-slate-200 ">
       <div className="mx-auto grid grid-cols-1 items-start lg:grid-cols-3">
         {/* Left column */}
-        <div className="grid grid-cols-1 lg:col-span-2">
+        <div className="grid grid-cols-1 lg:col-span-2 p-6">
           <MediaPlayer videoId={videoId} timestamp={timeStamp} controls />
         </div>
 
