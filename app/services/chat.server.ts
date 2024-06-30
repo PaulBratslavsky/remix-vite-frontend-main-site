@@ -39,6 +39,8 @@ export async function chat(videoId: string, query: string) {
     vectorStore
   );
 
+  console.dir(response, { depth: null }); 
+
   return response;
 }
 
@@ -93,7 +95,6 @@ async function chatWithData(query: string, model: any, vectorStore: any) {
     );
 
     const response = await chain.call({ question: query, chat_history: [] });
-    console.log(response);
     return response;
   } catch (error) {
     console.log(error);

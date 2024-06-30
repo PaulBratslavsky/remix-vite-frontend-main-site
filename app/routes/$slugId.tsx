@@ -12,7 +12,7 @@ import { FeaturedPosts } from "~/components/custom/FeaturedPosts";
 import { RootErrorComponent } from "~/components/custom/RootErrorComponent";
 import { Music } from "./resources.music";
 
-export async function loader({ params, request }: LoaderFunctionArgs) {
+export async function loader({ params }: LoaderFunctionArgs) {
   const { slugId } = params;
 
   if (!slugId) return json({ error: "No slugId provided" }, { status: 400 });
