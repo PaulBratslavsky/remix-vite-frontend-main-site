@@ -46,7 +46,7 @@ export function YouTubePlaylist({
               <h2 className="text-xl font-bold text-primary">{title}</h2>
               <p className="text-sm text-gray-500">{description}</p>
             </div>
-            <div className="relative max-h-[348px] overflow-scroll">
+            <div className="relative max-h-[270px] overflow-scroll">
               <div className="relative">
                 {playlist.map((clip, index) => {
                   return (
