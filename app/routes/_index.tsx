@@ -18,9 +18,10 @@ export const meta: MetaFunction = () => {
 
 export default function Index() {
   const data = useLoaderData<typeof loader>();
-  if (!data.blocks) return <p>No content found</p>;
 
-  const heroData = data.blocks[0];
+  const blocks = data.data?.blocks;
+  if (!blocks) return <p>No content found</p>;
+  const heroData = blocks[0];
   return (
     <div>
       <Hero data={heroData} />

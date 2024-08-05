@@ -1,5 +1,6 @@
 import { Link } from "@remix-run/react";
 import { Button } from "~/components/ui/button";
+import { StrapiImage } from "./StrapiImage";
 
 interface ImageProps {
   id: number;
@@ -38,12 +39,15 @@ function ButtonLink({ data }: { readonly data: ButtonLinkProps }) {
 
 export function Hero({ data }: { readonly data: HeroProps }) {
   const { heading, text, image, buttonLink } = data;
+  console.log(image.url);
   return (
     <section className="bg-gray-900">
       <div className="relative isolate overflow-hidden pt-14">
-        <img
+        <StrapiImage
           src={image.url}
           alt={image.alternativeText}
+          height={1080}
+          width={1920}
           className="absolute inset-0 -z-10 h-full w-full object-cover"
         />
         <div

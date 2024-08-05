@@ -34,7 +34,7 @@ function NavItem({
   className,
 }: {
   readonly item: NavItemProps;
-  className?: string;
+  readonly className?: string;
 }) {
   const navigation = useNavigation();
   const isLoading = navigation.state === "loading";

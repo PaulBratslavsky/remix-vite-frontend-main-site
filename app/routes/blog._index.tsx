@@ -26,6 +26,9 @@ export async function loader({ params, request }: LoaderFunctionArgs) {
   const pageData = await getPageData("blog");
   const postData = await getAllPostsData(query, page);
 
+  if (!postData) return json({ message: "No posts found" }, { status: 404 });
+
+
   return json({
     params: params,
     pageData: pageData.data[0],

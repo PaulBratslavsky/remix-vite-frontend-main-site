@@ -22,9 +22,11 @@ export const loader: LoaderFunction = async () => {
   return json({ globalDataResponse, ENV });
 };
 
-export function Layout({ children }: { children: React.ReactNode }) {
-  const { globalDataResponse } = useLoaderData<typeof loader>();
 
+
+export function Layout({ children }: { readonly children: React.ReactNode }) {
+  const { globalDataResponse } = useLoaderData<typeof loader>();
+  const topNav = globalDataResponse.data.topNav;
   return (
     <html lang="en">
       <head>
@@ -34,7 +36,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        <TopNav data={globalDataResponse.topNav} />
+        <TopNav data={topNav} />
         {children}
         <ScrollRestoration />
         <Scripts />

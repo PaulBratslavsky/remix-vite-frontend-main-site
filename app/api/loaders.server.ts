@@ -1,5 +1,5 @@
 import qs from "qs";
-import { flattenAttributes, getStrapiURL } from "~/lib/utils";
+import { getStrapiURL } from "~/lib/utils";
 import { fetchTranscript } from "~/services/youtube-transcript.server";
 
 const baseUrl = getStrapiURL();
@@ -8,9 +8,7 @@ const PAGE_SIZE = 6;
 async function fetchData(url: string) {
   try {
     const response = await fetch(url);
-    const data = await response.json();
-    const flattenedData = flattenAttributes(data);
-    return flattenedData;
+    return await response.json();
   } catch (error) {
     console.error("Error fetching data: ", error);
     throw error;
@@ -26,9 +24,13 @@ export async function getPageData(slug: string) {
     },
     populate: {
       blocks: {
-        populate: {
-          image: {
-            fields: ["url", "alternativeText"],
+        on: {
+          "layout.hero": {
+            populate: {
+              image: {
+                fields: ["url", "alternativeText"],
+              },
+            },
           },
         },
       },
@@ -40,7 +42,6 @@ export async function getPageData(slug: string) {
 }
 
 export async function getGlobalData() {
-
   const url = new URL("/api/global", baseUrl);
 
   url.search = qs.stringify({
@@ -51,18 +52,18 @@ export async function getGlobalData() {
 }
 
 export async function getHomePageData() {
-
   const url = new URL("/api/home-page", baseUrl);
-  
+
   url.search = qs.stringify({
     populate: {
       blocks: {
-        populate: {
-          image: {
-            fields: ["url", "alternativeText"],
-          },
-          buttonLink: {
-            populate: true,
+        on: {
+          "layout.hero": {
+            populate: {
+              image: {
+                fields: ["url", "alternativeText"],
+              },
+            },
           },
         },
       },
@@ -100,7 +101,7 @@ export async function getAllLinksData() {
 
 export async function getAllPostsData(query: string, page: string) {
   const url = new URL("/api/posts", baseUrl);
-  
+
   url.search = qs.stringify({
     sort: { createdAt: "desc" },
     populate: {
@@ -152,7 +153,7 @@ export async function getSinglePostsData(slug: string) {
 
 export async function getSinglePreviewPostsData(slug: string) {
   const url = new URL("/api/posts", baseUrl);
-  
+
   url.search = qs.stringify({
     filters: {
       slug: {

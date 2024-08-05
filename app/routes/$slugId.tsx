@@ -61,6 +61,9 @@ function pageRenderer(slug: string) {
 
 export default function PageSlugRoute() {
   const { data, params } = useLoaderData<typeof loader>() as PageData;
+  
+  return <h1>test</h1>
+  
   return (
     <div>
       {data?.blocks && <section>{data?.blocks.map(blocksRenderer)}</section>}

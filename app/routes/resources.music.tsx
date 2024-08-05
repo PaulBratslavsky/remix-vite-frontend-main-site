@@ -22,9 +22,10 @@ export function Music() {
   if (!fetcher.data) return null;
   if (isLoading) return <div className="bg-pink-500">Loading...</div>;
 
-  const { data } = fetcher.data as any;
+  const musicData = fetcher.data.data;  
 
-  return data.map((item: any) => {
+  return musicData.map((item: any) => {
+    if (!item) return null;
     return <InlineMusicPlayer key={item.id} audio={item} />;
   });
 }

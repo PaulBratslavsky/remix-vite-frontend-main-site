@@ -3,6 +3,7 @@ import { getStrapiMedia, cn } from "~/lib/utils";
 import { useCallback, useRef, useEffect, useState } from "react";
 import { PlayCircle, StopCircle, Loader2 } from "lucide-react";
 
+
 import { useWavesurfer } from "@wavesurfer/react";
 
 import { StrapiImage } from "~/components/custom/StrapiImage";
@@ -140,7 +141,7 @@ export function InlineMusicPlayer({
             <p>
               {audio.title}{" "}
               <span className="font-semibold text-slate-400">
-                by {audio.artist.name}
+                by {audio.artist && audio.artist.name}
               </span>
             </p>
             <p>{formatTime(currentTime)}</p>
